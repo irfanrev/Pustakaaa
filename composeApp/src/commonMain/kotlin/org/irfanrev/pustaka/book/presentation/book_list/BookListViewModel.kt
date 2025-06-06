@@ -1,12 +1,14 @@
 package org.irfanrev.pustaka.book.presentation.book_list
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import org.irfanrev.pustaka.book.domain.BookRepository
 
-class BookListViewModel : ViewModel() {
+class BookListViewModel(
+    private val bookRepository: BookRepository
+) : ViewModel() {
 
     private val _state = MutableStateFlow(BookListState())
     val state = _state.asStateFlow()
