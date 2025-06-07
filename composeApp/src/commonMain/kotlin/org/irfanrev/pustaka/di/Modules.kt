@@ -5,6 +5,7 @@ import org.irfanrev.pustaka.book.data.network.KtorRemoteBookDataSource
 import org.irfanrev.pustaka.book.data.repository.DefaultBookRepository
 import org.irfanrev.pustaka.book.domain.BookRepository
 import org.irfanrev.pustaka.book.domain.RemoteBookDataSource
+import org.irfanrev.pustaka.book.presentation.SelectedBookViewModel
 import org.irfanrev.pustaka.book.presentation.book_list.BookListViewModel
 import org.irfanrev.pustaka.core.data.HttpClientFactory
 import org.koin.core.module.Module
@@ -27,4 +28,5 @@ val sharedModule = module {
     singleOf(::DefaultBookRepository).bind<BookRepository>()
 
     viewModelOf(::BookListViewModel)
+    viewModelOf(::SelectedBookViewModel)
 }
