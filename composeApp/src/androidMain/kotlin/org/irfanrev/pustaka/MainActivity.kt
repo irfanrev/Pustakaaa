@@ -7,9 +7,11 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import okhttp3.OkHttp
 import org.irfanrev.pustaka.book.domain.Book
 import org.irfanrev.pustaka.book.presentation.book_list.BookListScreen
 import org.irfanrev.pustaka.book.presentation.book_list.BookListState
@@ -20,7 +22,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            App(
+                engine = remember { io.ktor.client.engine.okhttp.OkHttp.create() }
+            )
         }
     }
 }
@@ -44,7 +48,7 @@ private val books = (1..100).map {
     imageUrl = "https://picsum.photos/200/300?random=$it",
     authors = listOf("Author $it"), 
         description = "Description $it",
-    launguages = listOf("ID"),
+    languages = listOf("ID"),
             firstPublishYear = "2020",
         averageRating =4.0,
         ratingsCount = 100,
