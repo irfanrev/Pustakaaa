@@ -22,20 +22,18 @@ import org.irfanrev.pustaka.book.presentation.book_list.BookListViewModel
 import org.irfanrev.pustaka.core.data.HttpClientFactory
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.viewmodel.koinViewModel
 import pustaka.composeapp.generated.resources.Res
 import pustaka.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App(engine: HttpClientEngine) {
+fun App() {
+
+    val viewModel = koinViewModel<BookListViewModel>()
+
     BookListScreenRoot(
-        viewModel = remember { BookListViewModel(
-            bookRepository = DefaultBookRepository(
-                remoteBookDataSource = KtorRemoteBookDataSource(
-                    httpClient = HttpClientFactory.create(engine)
-                )
-            )
-        ) },
+        viewModel = viewModel,
         onBookClick = {
 
         }
